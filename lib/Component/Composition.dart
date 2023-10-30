@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:get/get.dart';
 
-class Composition {
+class CompositionModel {
   int id;
   String roleName;
   int roleAlignement;
   String roleImage;
   String roleDescription;
+  String player;
 
-  Composition(
+  CompositionModel(
       {required this.id,
       required this.roleName,
       required this.roleAlignement,
       required this.roleImage,
-      required this.roleDescription});
+      required this.roleDescription,
+      required this.player});
 
-  static map(Text Function(dynamic element) param0) {}
+  //static map(Text Function(dynamic element) param0) {}
 }
 
-// ignore: non_constant_identifier_names
-//List<dynamic> CompositionParti = [];
-List<Composition> arrayComposition = [];
-
-//const arrayComposition = <Composition>[];
+List<CompositionModel> composition = List.empty(growable: true);
+List<int> storageValue = List.empty(growable: true);

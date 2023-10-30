@@ -100,7 +100,7 @@ class ListRole extends StatelessWidget {
                                 ]),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 25,
                           child: Text(
                             st.roleName,
