@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 /*import '../../Component/SelectCompo/SelectCompoDemon.dart';*/
 class CompositionProvider extends ChangeNotifier {
   List<CompositionModel> listProvider = List.empty(growable: true);
-  List<int> tampon = [];
+  List<int> tampon = List.empty(growable: true);
   void addToComposition(CompositionModel newValue) {
     listProvider.add(newValue);
     notifyListeners();
@@ -21,17 +21,14 @@ class CompositionProvider extends ChangeNotifier {
 
   // ignore: non_constant_identifier_names
   void TamponComposition(tamponValue) {
-    tamponValue = tampon;
+    tampon = tamponValue;
   }
 
-  void removeToComposition(
-      idValue, indexValue, List listValue, List tamponValue) {
-    if (tampon.contains(idValue) != true) {
+  void removeToComposition(idValue, indexValue, List tamponValue) {
+    if (tampon.contains(idValue) != false) {
       listProvider.removeAt(indexValue);
-      listValue.removeAt(indexValue);
-      tampon.removeAt(indexValue);
-      tamponValue.removeAt(indexValue);
-      print('fuck');
+      tampon.removeAt(tampon.indexOf(idValue));
+      tamponValue = tampon;
     } else {
       print('double fuck');
     }
@@ -83,9 +80,9 @@ class _SelectCompoState extends State<SelectCompo>
                   TabBar(
                     controller: _tabController,
                     tabs: const [
-                      Tab(text: 'village'),
-                      Tab(text: 'etranger'),
-                      Tab(text: 'malefique'),
+                      Tab(text: 'Villageois'),
+                      Tab(text: 'Etranger'),
+                      Tab(text: 'maléfique'),
                     ],
                   ),
                   Expanded(
